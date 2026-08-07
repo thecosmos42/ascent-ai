@@ -1,45 +1,38 @@
-# 🚀 ascentAI: Intelligent Academic Concierge
+# ascentAI: Intelligent Academic Concierge
 
-A **multi-agent academic and university counseling system** designed to transform a student's confusion into a **clear, actionable plan**.
+A multi-agent academic and university counseling system designed to transform a student's confusion into a clear, actionable plan.
 
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Google ADK](https://img.shields.io/badge/Google-ADK-4285F4.svg)](https://github.com/google/adk)
 [![Gemini](https://img.shields.io/badge/Gemini-2.5--flash--lite-orange.svg)](https://ai.google.dev/)
 
----
+## Overview
 
-## 📖 Overview
+ascentAI is a personalized, long-term academic and university counselor for high school and undergraduate students. It guides students from uncertainty to clarity, moving them from "I'm uncertain about my future and next steps" to "I know my track, target schools, and prioritized steps for this year."
 
-**ascentAI** is a personalized, long-term academic and university counselor for high school and undergraduate students. It guides students from uncertainty to clarity by:
-
-- **From:** "I'm uncertain about my future and next steps."
-- **To:** "I know my track, target schools, and prioritized steps for this year."
-
-### The Problem: Decision Paralysis
+### The problem: Decision paralysis
 
 Students face critical gaps in academic guidance:
 
-- **Lack of Structure:** Overwhelmed by options without a clear, structured planning process
-- **Limited Access:** High student-to-counselor ratios prevent sustained, personalized attention
-- **Actionable Gap:** Difficulty connecting abstract interests to realistic academic tracks and timed application steps
+- Lack of structure: overwhelmed by options without a clear, structured planning process
+- Limited access: high student-to-counselor ratios prevent sustained, personalized attention
+- Actionable gap: difficulty connecting abstract interests to realistic academic tracks and timed application steps
 
-### The Solution: Multi-Agent Intelligence
+### The solution: Multi-Agent Intelligence
 
-ascentAI delivers **24/7 personalized guidance** through a structured, multi-agent pipeline that:
+ascentAI delivers 24/7 personalized guidance through a structured, multi-agent pipeline that:
 
-1. **🔍 Profiles** students by extracting interests, grades, and constraints into a standardized format
-2. **🗺️ Maps** student profiles to 2-3 plausible academic tracks/majors using advanced reasoning
-3. **🎯 Shortlists** universities into Reach/Target/Safe tiers based on realistic constraints
-4. **🗓️ Generates** comprehensive, grade-specific action plans spanning 12-24 months
-5. **🔄 Mentors** continuously by following up, tracking progress, and updating roadmaps
+1. Profiles students by extracting interests, grades, and constraints into a standardized format
+2. Maps student profiles to 2-3 plausible academic tracks/majors using advanced reasoning
+3. Shortlists universities into Reach/Target/Safe tiers based on realistic constraints
+4. Generates comprehensive, grade-specific action plans spanning 12-24 months
+5. Mentors continuously by following up, tracking progress, and updating roadmaps
 
----
+## Architecture
 
-## 🏗️ Architecture
+### Multi-agent pipeline
 
-### Multi-Agent Pipeline
-
-ascentAI uses a **Sequential Multi-Agent System** where data flows through specialized agents:
+ascentAI uses a sequential multi-agent system where data flows through specialized agents:
 
 ```mermaid
 graph LR
@@ -48,11 +41,11 @@ graph LR
     C --> D[University Agent]
     D --> E[Action Plan Agent]
     E --> F[Final Report]
-    
+
     B -.-> G[(Memory Bank)]
     E -.-> G
     G -.-> H[Mentor Agent]
-    
+
     style B fill:#4285F4
     style C fill:#34A853
     style D fill:#FBBC04
@@ -62,61 +55,57 @@ graph LR
 
 | Agent | Function | Output |
 |-------|----------|--------|
-| **Profile Agent** | Data extraction & standardization | Structured student profile (JSON) |
-| **Mapper Agent** | Interest-to-major mapping | 2-3 academic tracks + main recommendation |
-| **University Agent** | Constraint-based filtering | Reach/Target/Safe university shortlist |
-| **Action Plan Agent** | Timeline generation | 12-24 month actionable roadmap |
-| **Mentor Agent** | Long-term guidance | Progress-aware mentoring updates |
+| Profile Agent | Data extraction and standardization | Structured student profile (JSON) |
+| Mapper Agent | Interest-to-major mapping | 2-3 academic tracks plus main recommendation |
+| University Agent | Constraint-based filtering | Reach/Target/Safe university shortlist |
+| Action Plan Agent | Timeline generation | 12-24 month actionable roadmap |
+| Mentor Agent | Long-term guidance | Progress-aware mentoring updates |
 
-### Technology Stack
+### Technology stack
 
-- **Framework:** [Google Agent Development Kit (ADK)](https://github.com/google/adk)
-- **LLM:** Gemini 2.5 Flash Lite for advanced reasoning
-- **Memory:** In-memory session service for persistent student profiles
-- **Custom Tools:** University search and memory management utilities
+- Framework: [Google Agent Development Kit (ADK)](https://github.com/google/adk)
+- LLM: Gemini 2.5 Flash Lite for advanced reasoning
+- Memory: in-memory session service for persistent student profiles
+- Custom tools: university search and memory management utilities
 
----
-
-## 🚀 Getting Started
+## Getting started
 
 ### Prerequisites
 
 - Python 3.11 or higher
-- Google API Key (Gemini API access)
+- Google API key (Gemini API access)
 - Jupyter Notebook environment (for running the demo)
 
 ### Installation
 
-1. **Clone the repository:**
+1. Clone the repository:
    ```bash
    git clone https://github.com/thecosmos42/ascentAI.git
    cd ascentAI
    ```
 
-2. **Install dependencies:**
+2. Install dependencies:
    ```bash
    pip install google-adk google-genai
    ```
 
-3. **Set up API credentials:**
-   
+3. Set up API credentials.
+
    For Kaggle notebooks:
    ```python
    from kaggle_secrets import UserSecretsClient
    GOOGLE_API_KEY = UserSecretsClient().get_secret("GOOGLE_API_KEY")
    ```
-   
+
    For local development:
    ```python
    import os
    os.environ["GOOGLE_API_KEY"] = "your-api-key-here"
    ```
 
----
+## Usage
 
-## 💡 Usage
-
-### 1. Initial Student Profiling
+### 1. Initial student profiling
 
 Customize the student description with relevant information:
 
@@ -130,7 +119,7 @@ I have one year of experience as a Data Analyst.
 """
 ```
 
-### 2. Get Progress Updates
+### 2. Get progress updates
 
 ```python
 progress_update = """
@@ -146,16 +135,14 @@ mentor_response = await mentor_runner.run_debug(json.dumps({
 }))
 ```
 
----
+## Customization
 
-## 🛠️ Customization
-
-### University Database
+### University database
 
 The system uses a customizable university database. To personalize recommendations:
 
-1. Locate the `UNIVERSITY_DB` list in the notebook
-2. Add/modify university entries following this schema:
+1. Locate the `UNIVERSITY_DB` list in the notebook.
+2. Add or modify university entries following this schema:
 
 ```python
 {
@@ -169,52 +156,45 @@ The system uses a customizable university database. To personalize recommendatio
     "notes": "Additional information"
 }
 ```
----
 
-## 📊 Output Format
+## Output format
 
 The system generates a comprehensive Markdown report including:
 
-- **Student Profile:** Name, grade, interests, strengths, constraints
-- **Main Track Recommendation:** Chosen academic/career path with justification
-- **University Shortlist:** Categorized into Reach, Target, and Safe schools
-- **Action Plan Timeline:**
+- Student profile: name, grade, interests, strengths, constraints
+- Main track recommendation: chosen academic/career path with justification
+- University shortlist: categorized into Reach, Target, and Safe schools
+- Action plan timeline:
   - Short-term tasks (0-6 months)
   - Medium-term tasks (6-12 months)
   - Long-term tasks (12-24 months)
 
----
+## Technical details
 
-## 🔧 Technical Details
+### Custom tools
 
-### Custom Tools
+1. `UniversitySearchTool` – filters universities based on profile constraints and chosen track
+2. `save_profile_tool` – persists student profiles to memory
+3. `get_profile_tool` – retrieves stored student profiles
+4. `save_plan_tool` – saves generated action plans
+5. `get_plan_tool` – retrieves stored action plans
 
-1. **UniversitySearchTool:** Filters universities based on profile constraints and chosen track
-2. **save_profile_tool:** Persists student profiles to memory
-3. **get_profile_tool:** Retrieves stored student profiles
-4. **save_plan_tool:** Saves generated action plans
-5. **get_plan_tool:** Retrieves stored action plans
-
-### Memory Management
+### Memory management
 
 The system maintains two in-memory databases:
 
-- `STUDENT_MEMORY`: Stores structured student profiles
-- `PLAN_MEMORY`: Stores generated action plans
+- `STUDENT_MEMORY`: stores structured student profiles
+- `PLAN_MEMORY`: stores generated action plans
 
 This enables the Mentor Agent to provide continuous, context-aware guidance across multiple sessions.
 
----
+## Use cases
 
-## 🎯 Use Cases
+- High school students planning undergraduate applications
+- Undergraduate students planning graduate school applications
+- Career switchers exploring new academic paths
+- Academic counselors augmenting human counseling with AI-powered insights
 
-- **High School Students:** Planning undergraduate applications
-- **Undergraduate Students:** Planning graduate school applications
-- **Career Switchers:** Exploring new academic paths
-- **Academic Counselors:** Augmenting human counseling with AI-powered insights
+## Acknowledgments
 
----
-
-## 🙏 Acknowledgments
-
-- Developed as part of the [AI Agents Course with Google](https://www.kaggle.com/learn-guide/5-day-agents)
+Developed as part of the [AI Agents Course with Google](https://www.kaggle.com/learn-guide/5-day-agents).
