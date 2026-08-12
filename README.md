@@ -1,7 +1,7 @@
 # ascentAI: Intelligent Academic Concierge
 
 A multi-agent academic and university counseling system designed to transform a student's confusion into a clear, actionable plan.
-![ascentAI Landing Page Poster](image_2.png)
+![ascentAI Landing Page Poster](ascent-project.png)
 
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Google ADK](https://img.shields.io/badge/Google-ADK-4285F4.svg)](https://github.com/google/adk)
